@@ -1,0 +1,18 @@
+# docker-compose.yml
+# Wygodne uruchomienie calego systemu jednym poleceniem:
+#   docker compose up --build
+# Zatrzymanie:
+#   docker compose down
+
+services:
+  swarm:
+    build: .
+    container_name: drone_swarm
+    network_mode: host        # Wazne dla DDS (komunikacja ROS2)
+    ipc: host
+    stdin_open: true
+    tty: true
+    environment:
+      - ROS_DOMAIN_ID=42      # Izoluje wiadomosci od innych ROS na sieci
+    # Domyslnie uruchamia caly roj
+    command: ["ros2", "launch", "drone_swarm", "swarm_launch.py"]

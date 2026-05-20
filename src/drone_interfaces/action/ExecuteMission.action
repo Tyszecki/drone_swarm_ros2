@@ -1,0 +1,19 @@
+# ExecuteMission.action
+# Akcja: wyslij drona do punktu docelowego (waypoint)
+# Pokazuje pelny mechanizm Action: Goal / Result / Feedback
+
+# === GOAL ===
+int32 drone_id
+geometry_msgs/Point target_position
+float32 max_speed
+---
+# === RESULT ===
+bool success
+geometry_msgs/Point final_position
+float32 duration_seconds
+string result_message
+---
+# === FEEDBACK (wysylany podczas wykonywania) ===
+float32 progress_percent
+geometry_msgs/Point current_position
+float32 distance_remaining
